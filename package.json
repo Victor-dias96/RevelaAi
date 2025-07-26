@@ -1,0 +1,14 @@
+{
+  "name": "coursepolis",
+  "version": "1.0.0",
+  "description": "🌍 Descrição  Plataforma open source que visa reunir informações relevantes sobre candidatos políticos, promovendo maior consciência nas eleições brasileiras.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prettier": "^3.6.2"
+  }
+}
