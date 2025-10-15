@@ -1,0 +1,63 @@
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  gap: 2rem;
+  background-color: #0f1e52;
+  color: white;
+}
+
+.flagSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.flagSection img {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.flagSection p {
+  max-width: 400px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+.btnPrincipal {
+  background-color: #0096ff;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 30px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnPrincipal:hover {
+  background-color: #007be0;
+}
+
+/* RESPONSIVIDADE */
+@media (min-width: 768px) {
+  .flagSection {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    text-align: left;
+  }
+
+  .flagSection p {
+    max-width: 350px;
+  }
+}
