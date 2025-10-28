@@ -1,4 +1,5 @@
-import "./Header.module.css";
+import React from "react";
+import "./Header.css"; // <-- CORREÇÃO AQUI! Trocado de .module.css para .css
 
 const Header = () => {
   return (
@@ -22,7 +23,7 @@ const Header = () => {
           </svg>
         </button>
 
-        <h1 className="logo">RevalaAi</h1>
+        <h1 className="logo">RevelaAi</h1>
 
         <a href="#" className="botao-apoie">
           Apoie

@@ -1,0 +1,50 @@
+.cabecalho {
+  background-color: #e7e7e7;
+  color: #101f5c;
+  padding: 0 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navegacao-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.botao-menu {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  color: #101f5c; /* Mudei para a cor do cabeçalho, já que o fundo é claro */
+}
+
+.botao-menu:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Leve escurecida no hover */
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.botao-apoie {
+  background-image: linear-gradient(to right, #30cfd0, #330867);
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Você tinha duas regras de hover, juntei em uma */
+.botao-apoie:hover {
+  opacity: 0.9;
+  background-color: #06b6d4; /* Este pode ser redundante com o opacity */
+}

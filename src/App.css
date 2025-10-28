@@ -1,0 +1,9 @@
+.aplicacao-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.conteudo-principal {
+  flex-grow: 1;
+}
