@@ -1,0 +1,39 @@
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  text-align: center;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #000;
+}
+
+.position {
+  color: #666;
+  margin: 0.25rem 0;
+}
+
+.state {
+  color: #888;
+  margin: 0.25rem 0;
+}
+
+.party-logo {
+  max-width: 80px;
+  height: auto;
+  margin-top: 1rem;
+}
