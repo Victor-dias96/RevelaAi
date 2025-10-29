@@ -63,8 +63,5 @@ Feito com 💙 por estudantes que acreditam na transformação pela informação
 
 ---
 
-<div align="center">
-  <img src="public/revelaai-logo.png" alt="RevelaAi Logo" width="80"/>
-  <br>
 
 </div>
