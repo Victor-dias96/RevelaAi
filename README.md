@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/revelaai-logo.png" alt="RevelaAi Logo" width="120"/>
+  <img src="./public/images/IconeRevelaAi.png" alt="RevelaAi Logo" width="120"/>
   <h1>🗳️ RevelaAi - Conheça os Partidos do Brasil 🇧🇷</h1>
   <p>
     <b>Descubra, informe-se e faça a diferença!</b><br>
