@@ -4,17 +4,17 @@ import "./Search.css";
 import { usePoliticoData } from "../hooks/usePoliticoData";
 
 const Search = () => {
-  const { data, isLoading, isError, error } = usePoliticoData();
+  // const { data, isLoading, isError, error } = usePoliticoData();
 
-  if (isLoading) {
-    return <span>Carregando políticos...</span>;
-  }
+  // if (isLoading) {
+  //   return <span>Carregando políticos...</span>;
+  // }
 
-  if (isError) {
-    return <span>Erro ao buscar dados: {error.message}</span>;
-  }
+  // if (isError) {
+  //   return <span>Erro ao buscar dados: {error.message}</span>;
+  // }
 
-  console.log("Tamanho do array de políticos: ", data.length);
+  // console.log("Tamanho do array de políticos: ", data.length);
 
   return (
     <>
@@ -31,7 +31,7 @@ const Search = () => {
         <button className="search-button">Buscar</button>
       </div>
       <div className="cards-container">
-        {data.map((politico) => (
+        {/* {data.map((politico) => (
           <Card
             key={politico.id}
             foto={politico.urlFoto}
@@ -41,16 +41,40 @@ const Search = () => {
             partido={politico.partido}
             logoPartido="../../public/images/PSD.jpg"
           />
-        ))}
+        ))}  */}
 
-        {/* <Card
-          foto="../../public/images/aurea-ribeiro.jpg"
+        <Card
+          foto="../../public/images/Adailton-Martins.jpg"
           nome="Áurea Ribeiro"
           cargo="Deputado Estadual"
           estado="Sergipe"
           partido="Republicanos"
           logoPartido="../../public/images/Republicanos.png"
-        /> */}
+        />
+        <Card
+          foto="../../public/images/Adailton-Martins.jpg"
+          nome="Áurea Ribeiro"
+          cargo="Deputado Estadual"
+          estado="Sergipe"
+          partido="Republicanos"
+          logoPartido="../../public/images/Republicanos.png"
+        />
+        <Card
+          foto="../../public/images/Adailton-Martins.jpg"
+          nome="Áurea Ribeiro"
+          cargo="Deputado Estadual"
+          estado="Sergipe"
+          partido="Republicanos"
+          logoPartido="../../public/images/Republicanos.png"
+        />
+        <Card
+          foto="../../public/images/Adailton-Martins.jpg"
+          nome="Áurea Ribeiro"
+          cargo="Deputado Estadual"
+          estado="Sergipe"
+          partido="Republicanos"
+          logoPartido="../../public/images/Republicanos.png"
+        />
       </div>
     </>
   );
