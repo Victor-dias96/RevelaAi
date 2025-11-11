@@ -2,9 +2,20 @@ import Header from "../Components/Header";
 import Card from "../Components/Card";
 import "./Search.css";
 import { usePoliticoData } from "../hooks/usePoliticoData";
+import { useEffect, useState } from "react";
 
 const Search = () => {
-  const { data, isLoading, isError, error } = usePoliticoData();
+  const [numberPage, setNumberPage] = useState(1)
+
+  // Rola a tela para o topo quando a página muda
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [numberPage])
+
+  const { data, isLoading, isError, error } = usePoliticoData(numberPage);
 
   if (isLoading) {
     return <span>Carregando políticos...</span>;
@@ -15,6 +26,18 @@ const Search = () => {
   }
 
   console.log("Tamanho do array de políticos: ", data.length);
+
+
+  //Funções dos botões da lista
+  const handlePreviousButton = () => {
+    if (numberPage > 1) {
+      setNumberPage(prev => prev - 1);
+    }
+  }
+
+  const handleNextButton = () => {
+    setNumberPage(prev => prev + 1);
+  }
 
   return (
     <>
@@ -51,6 +74,12 @@ const Search = () => {
           partido="Republicanos"
           logoPartido="../../public/images/Republicanos.png"
         /> */}
+
+      </div>
+      <div className="buttons-container">
+        {(numberPage > 1) ? <button onClick={handlePreviousButton}>Anterior</button> : null}
+        <p>{numberPage}</p>
+        <button onClick={handleNextButton}>Próximo</button>
       </div>
     </>
   );

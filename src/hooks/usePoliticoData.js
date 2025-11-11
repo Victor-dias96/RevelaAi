@@ -5,14 +5,15 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080";
 
-const fetchData = async () => {
-  const { data } = await axios.get(API_URL + "/api/deputado");
+const fetchData = async ({ queryKey }) => {
+  const [_key, pagina] = queryKey;
+  const { data } = await axios.get(`${API_URL}/api/deputado?pagina=${pagina}`);
   return data.dados;
 };
 
-export function usePoliticoData() {
+export function usePoliticoData(pagina) {
   const query = useQuery({
-    queryKey: ["politicos-todos"],
+    queryKey: ["politicos-todos", pagina],
     queryFn: fetchData,
   });
 
