@@ -1,20 +1,55 @@
+import React, { useState } from "react";
 import Header from "../Components/Header";
 import Card from "../Components/Card";
 import "./Search.css";
-import { usePoliticoData } from "../hooks/usePoliticoData";
+
+const bancoFixoDePoliticos = [
+  {
+    id: 1,
+    foto: "/images/Adailton-Martins.jpg",
+    nome: "Áurea Ribeiro",
+    cargo: "Deputado Estadual",
+    estado: "Sergipe",
+    partido: "Republicanos",
+    logoPartido: "/images/Republicanos.png",
+  },
+  {
+    id: 2,
+    foto: "/images/Adailton-Martins.jpg",
+    nome: "Adailton Martins",
+    cargo: "Deputado Federal",
+    estado: "Sergipe",
+    partido: "PSD",
+    logoPartido: "/images/PSD.jpg",
+  },
+  {
+    id: 3,
+    foto: "/images/Adailton-Martins.jpg",
+    nome: "Marcos Aurélio",
+    cargo: "Senador",
+    estado: "Bahia",
+    partido: "Republicanos",
+    logoPartido: "/images/Republicanos.png",
+  },
+  {
+    id: 4,
+    foto: "/images/Adailton-Martins.jpg",
+    nome: "Ana Carolina",
+    cargo: "Deputada Estadual",
+    estado: "São Paulo",
+    partido: "PCdoB",
+    logoPartido: "/images/Republicanos.png",
+  },
+];
 
 const Search = () => {
-  // const { data, isLoading, isError, error } = usePoliticoData();
+  const [termoDeBusca, setTermoDeBusca] = useState("");
 
-  // if (isLoading) {
-  //   return <span>Carregando políticos...</span>;
-  // }
+  const termoBuscaLimpo = termoDeBusca.trim().toLowerCase();
 
-  // if (isError) {
-  //   return <span>Erro ao buscar dados: {error.message}</span>;
-  // }
-
-  // console.log("Tamanho do array de políticos: ", data.length);
+  const politicosFiltrados = bancoFixoDePoliticos.filter((politico) =>
+    politico.nome.toLowerCase().includes(termoBuscaLimpo)
+  );
 
   return (
     <>
@@ -23,58 +58,35 @@ const Search = () => {
         <button className="filterButton-one">O que busca </button>
         <button className="filterButton-two">Estado </button>
         <button className="filterButton-three">Filtro </button>
+
         <input
           type="text"
-          placeholder="Selecione o estado"
+          placeholder="Digite o nome do candidato..."
           className="search-input"
+          value={termoDeBusca}
+          onChange={(e) => setTermoDeBusca(e.target.value)}
         />
         <button className="search-button">Buscar</button>
       </div>
-      <div className="cards-container">
-        {/* {data.map((politico) => (
-          <Card
-            key={politico.id}
-            foto={politico.urlFoto}
-            nome={politico.nome}
-            cargo={politico.cargo}
-            estado={politico.siglaUf}
-            partido={politico.partido}
-            logoPartido="../../public/images/PSD.jpg"
-          />
-        ))}  */}
 
-        <Card
-          foto="../../public/images/Adailton-Martins.jpg"
-          nome="Áurea Ribeiro"
-          cargo="Deputado Estadual"
-          estado="Sergipe"
-          partido="Republicanos"
-          logoPartido="../../public/images/Republicanos.png"
-        />
-        <Card
-          foto="../../public/images/Adailton-Martins.jpg"
-          nome="Áurea Ribeiro"
-          cargo="Deputado Estadual"
-          estado="Sergipe"
-          partido="Republicanos"
-          logoPartido="../../public/images/Republicanos.png"
-        />
-        <Card
-          foto="../../public/images/Adailton-Martins.jpg"
-          nome="Áurea Ribeiro"
-          cargo="Deputado Estadual"
-          estado="Sergipe"
-          partido="Republicanos"
-          logoPartido="../../public/images/Republicanos.png"
-        />
-        <Card
-          foto="../../public/images/Adailton-Martins.jpg"
-          nome="Áurea Ribeiro"
-          cargo="Deputado Estadual"
-          estado="Sergipe"
-          partido="Republicanos"
-          logoPartido="../../public/images/Republicanos.png"
-        />
+      <div className="cards-container">
+        {politicosFiltrados.length > 0 ? (
+          politicosFiltrados.map((politico) => (
+            <Card
+              key={politico.id}
+              foto={politico.foto}
+              nome={politico.nome}
+              cargo={politico.cargo}
+              estado={politico.estado}
+              partido={politico.partido}
+              logoPartido={politico.logoPartido}
+            />
+          ))
+        ) : (
+          <p style={{ color: "white", fontSize: "1.2rem" }}>
+            Nenhum político encontrado com esse nome.
+          </p>
+        )}
       </div>
     </>
   );
