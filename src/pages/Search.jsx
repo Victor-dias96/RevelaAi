@@ -3,17 +3,18 @@ import Card from "../Components/Card";
 import "./Search.css";
 import { usePoliticoData } from "../hooks/usePoliticoData";
 import { useEffect, useState } from "react";
+import { logoConverterMap } from "../utils/logoConverter";
 
 const Search = () => {
-  const [numberPage, setNumberPage] = useState(1)
+  const [numberPage, setNumberPage] = useState(1);
 
   // Rola a tela para o topo quando a página muda
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
-    })
-  }, [numberPage])
+      behavior: "smooth",
+    });
+  }, [numberPage]);
 
   const { data, isLoading, isError, error } = usePoliticoData(numberPage);
 
@@ -27,17 +28,16 @@ const Search = () => {
 
   console.log("Tamanho do array de políticos: ", data.length);
 
-
   //Funções dos botões da lista
   const handlePreviousButton = () => {
     if (numberPage > 1) {
-      setNumberPage(prev => prev - 1);
+      setNumberPage((prev) => prev - 1);
     }
-  }
+  };
 
   const handleNextButton = () => {
-    setNumberPage(prev => prev + 1);
-  }
+    setNumberPage((prev) => prev + 1);
+  };
 
   return (
     <>
@@ -54,17 +54,21 @@ const Search = () => {
         <button className="search-button">Buscar</button>
       </div>
       <div className="cards-container">
-        {data.map((politico) => (
-          <Card
-            key={politico.id}
-            foto={politico.urlFoto}
-            nome={politico.nome}
-            cargo={politico.cargo}
-            estado={politico.siglaUf}
-            partido={politico.partido}
-            logoPartido="../../public/images/PSD.jpg"
-          />
-        ))}
+        {data.map((politico) => {
+          const logoUrl = logoConverterMap[politico.siglaPartido] || logoConverterMap['DEFAULT'];
+
+          return (
+            <Card
+              key={politico.id}
+              foto={politico.urlFoto}
+              nome={politico.nome}
+              cargo={politico.cargo}
+              estado={politico.siglaUf}
+              partido={politico.partido}
+              logoPartido={logoUrl}
+            />
+          );
+        })}
 
         {/* <Card
           foto="../../public/images/aurea-ribeiro.jpg"
@@ -74,10 +78,11 @@ const Search = () => {
           partido="Republicanos"
           logoPartido="../../public/images/Republicanos.png"
         /> */}
-
       </div>
       <div className="buttons-container">
-        {(numberPage > 1) ? <button onClick={handlePreviousButton}>Anterior</button> : null}
+        {numberPage > 1 ? (
+          <button onClick={handlePreviousButton}>Anterior</button>
+        ) : null}
         <p>{numberPage}</p>
         <button onClick={handleNextButton}>Próximo</button>
       </div>
