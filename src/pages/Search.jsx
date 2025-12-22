@@ -1,95 +1,113 @@
 import React, { useState } from "react";
-import Header from "../Components/Header";
 import Card from "../Components/Card";
+import SearchBar from "../Components/SearchBar/SearchBar";
+import Header from "../Components/Header"; // IMPORTANTE: Importando o Header oficial
 import "./Search.css";
 
-const bancoFixoDePoliticos = [
+// --- DADOS COM IMAGENS REAIS (Baseado no seu print da pasta public) ---
+const bancoPoliticos = [
   {
     id: 1,
-    foto: "/images/Adailton-Martins.jpg",
     nome: "Áurea Ribeiro",
     cargo: "Deputado Estadual",
     estado: "Sergipe",
     partido: "Republicanos",
-    logoPartido: "/images/Republicanos.png",
+    foto: "/images/Aurea-Ribeiro.jpg", // Caminho correto (sem /public)
   },
   {
     id: 2,
-    foto: "/images/Adailton-Martins.jpg",
     nome: "Adailton Martins",
     cargo: "Deputado Federal",
     estado: "Sergipe",
     partido: "PSD",
-    logoPartido: "/images/PSD.jpg",
+    foto: "/images/Adailton-Martins.jpg",
   },
   {
     id: 3,
-    foto: "/images/Adailton-Martins.jpg",
     nome: "Marcos Aurélio",
     cargo: "Senador",
     estado: "Bahia",
     partido: "Republicanos",
-    logoPartido: "/images/Republicanos.png",
-  },
-  {
-    id: 4,
-    foto: "/images/Adailton-Martins.jpg",
-    nome: "Ana Carolina",
-    cargo: "Deputada Estadual",
-    estado: "São Paulo",
-    partido: "PCdoB",
-    logoPartido: "/images/Republicanos.png",
+    foto: "https://randomuser.me/api/portraits/men/44.jpg", // Exemplo (não vi a foto dele na pasta)
   },
 ];
 
-const Search = () => {
-  const [termoDeBusca, setTermoDeBusca] = useState("");
+const bancoVotacoes = [
+  {
+    id: 1,
+    tipo: "PL",
+    num: "1234/24",
+    tema: "Educação",
+    ementa: "Dispõe sobre o incentivo à cultura digital nas escolas.",
+    autor: "Dep. Silva",
+    voto: "Sim",
+  },
+  {
+    id: 2,
+    tipo: "PEC",
+    num: "45/23",
+    tema: "Economia",
+    ementa: "Altera o sistema tributário nacional.",
+    autor: "Governo",
+    voto: "Não",
+  },
+];
 
-  const termoBuscaLimpo = termoDeBusca.trim().toLowerCase();
+const SearchPage = () => {
+  const [abaAtiva, setAbaAtiva] = useState("politicos");
 
-  const politicosFiltrados = bancoFixoDePoliticos.filter((politico) =>
-    politico.nome.toLowerCase().includes(termoBuscaLimpo)
-  );
+  const [filtros, setFiltros] = useState({
+    termo: "",
+    estado: "",
+    tema: "",
+  });
+
+  const getResultados = () => {
+    if (abaAtiva === "politicos") {
+      return bancoPoliticos.filter(
+        (p) =>
+          p.nome.toLowerCase().includes(filtros.termo.toLowerCase()) &&
+          (filtros.estado ? p.estado === filtros.estado : true)
+      );
+    } else {
+      return bancoVotacoes.filter(
+        (v) =>
+          (v.ementa.toLowerCase().includes(filtros.termo.toLowerCase()) ||
+            v.num.includes(filtros.termo)) &&
+          (filtros.tema ? v.tema === filtros.tema : true)
+      );
+    }
+  };
+
+  const resultados = getResultados();
 
   return (
-    <>
+    <div className="main-page">
+      {/* Usando o Componente Header que já tem o estilo pronto */}
       <Header />
-      <div className="search-bar">
-        <button className="filterButton-one">O que busca </button>
-        <button className="filterButton-two">Estado </button>
-        <button className="filterButton-three">Filtro </button>
 
-        <input
-          type="text"
-          placeholder="Digite o nome do candidato..."
-          className="search-input"
-          value={termoDeBusca}
-          onChange={(e) => setTermoDeBusca(e.target.value)}
+      <section className="search-section">
+        <SearchBar
+          abaAtiva={abaAtiva}
+          setAbaAtiva={setAbaAtiva}
+          filtros={filtros}
+          setFiltros={setFiltros}
+          onSearch={() => console.log("Buscando...")}
         />
-        <button className="search-button">Buscar</button>
-      </div>
+      </section>
 
-      <div className="cards-container">
-        {politicosFiltrados.length > 0 ? (
-          politicosFiltrados.map((politico) => (
-            <Card
-              key={politico.id}
-              foto={politico.foto}
-              nome={politico.nome}
-              cargo={politico.cargo}
-              estado={politico.estado}
-              partido={politico.partido}
-              logoPartido={politico.logoPartido}
-            />
+      <main className="cards-grid">
+        {resultados.length > 0 ? (
+          resultados.map((item) => (
+            // Passamos "politico={item}" para combinar com o Card.jsx
+            <Card key={item.id} politico={item} tipo={abaAtiva} />
           ))
         ) : (
-          <p style={{ color: "white", fontSize: "1.2rem" }}>
-            Nenhum político encontrado com esse nome.
-          </p>
+          <p className="no-results">Nenhum resultado encontrado.</p>
         )}
-      </div>
-    </>
+      </main>
+    </div>
   );
 };
 
-export default Search;
+export default SearchPage;
