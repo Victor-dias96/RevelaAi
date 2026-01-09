@@ -1,0 +1,174 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+
+.profile-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+
+  display: flex;
+  gap: 2rem;
+}
+
+.profile-img-container img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 4px solid #2ecc71;
+  object-fit: cover;
+}
+
+.psd-logo {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 60px;
+}
+
+.profile-info h1 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+/* DETAILS */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.value {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+/* SOCIAL */
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.social-icons a {
+  width: 34px;
+  height: 34px;
+  background: #f2f2f2;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #333;
+}
+
+
+.categories-list {
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cat-item {
+  background: white;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+
+  border-left: 5px solid #2ecc71;
+}
+
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.party-card {
+  background: linear-gradient(135deg, #0c4fa3, #0b77c2);
+  color: white;
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.btn-ver-partido {
+  display: inline-block;
+  margin-top: 1.5rem;
+
+  background: #0b4d3a;
+  color: white;
+  padding: 0.5rem 1.3rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+
+.others-card {
+  background: #eef0f8;
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+
+.others-title {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.deputy-list-item {
+  background: white;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
