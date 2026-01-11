@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Card from "../Components/Card";
 import SearchBar from "../Components/SearchBar/SearchBar";
-import Header from "../Components/Header"; // IMPORTANTE: Importando o Header oficial
+import Header from "../Components/Header";
 import "./Search.css";
 
-// --- DADOS COM IMAGENS REAIS (Baseado no seu print da pasta public) ---
 const bancoPoliticos = [
   {
     id: 1,
@@ -12,7 +11,7 @@ const bancoPoliticos = [
     cargo: "Deputado Estadual",
     estado: "Sergipe",
     partido: "Republicanos",
-    foto: "/images/Aurea-Ribeiro.jpg", // Caminho correto (sem /public)
+    foto: "/images/Aurea-Ribeiro.jpg",
   },
   {
     id: 2,
@@ -28,7 +27,7 @@ const bancoPoliticos = [
     cargo: "Senador",
     estado: "Bahia",
     partido: "Republicanos",
-    foto: "https://randomuser.me/api/portraits/men/44.jpg", // Exemplo (não vi a foto dele na pasta)
+    foto: "https://randomuser.me/api/portraits/men/44.jpg",
   },
 ];
 
@@ -83,7 +82,6 @@ const SearchPage = () => {
 
   return (
     <div className="main-page">
-      {/* Usando o Componente Header que já tem o estilo pronto */}
       <Header />
 
       <section className="search-section">
@@ -99,7 +97,6 @@ const SearchPage = () => {
       <main className="cards-grid">
         {resultados.length > 0 ? (
           resultados.map((item) => (
-            // Passamos "politico={item}" para combinar com o Card.jsx
             <Card key={item.id} politico={item} tipo={abaAtiva} />
           ))
         ) : (

@@ -1,19 +1,18 @@
 .main-page {
   min-height: 100vh;
-  background-color: #0f1e52; /* Azul Escuro da Imagem */
+  background-color: #0f1e52;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   display: flex;
   flex-direction: column;
 }
 
-/* Header */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: transparent; /* Ou um tom levemente diferente se quiser */
+  background-color: transparent;
 }
 
 .logo-text {
@@ -31,7 +30,6 @@
   font-weight: bold;
 }
 
-/* Grid de Cards */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -55,11 +53,10 @@
   margin: 0 auto;
 }
 
-/* Grid responsivo */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
-  justify-items: center; /* Centraliza o card na célula */
+  justify-items: center;
   margin-top: 2rem;
 }
