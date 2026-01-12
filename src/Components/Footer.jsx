@@ -1,3 +1,4 @@
+import { logoConverterMap } from "../utils/logoConverter";
 import "./Footer.css";
 
 const Footer = ({ message, partidos }) => {
@@ -5,9 +6,12 @@ const Footer = ({ message, partidos }) => {
     <footer className="footer">
       <p>{message}</p>
       <div className="partidos">
-        {partidos.map((partido) => (
-          <img key={partido.id} src={partido.logo} alt={partido.nome} />
-        ))}
+        {partidos.map((partido) => {
+          const logoUrl =
+            logoConverterMap[partido.sigla] || logoConverterMap["DEFAULT"];
+
+          return <img key={partido.id} src={logoUrl} alt={partido.nome} />;
+        })}
       </div>
     </footer>
   );

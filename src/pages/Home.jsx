@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../Components/Header.jsx";
 import Footer from "../Components/Footer.jsx";
 import "./Home.css";
+import { usePartidoData } from "../hooks/usePartidoData.js";
 
 const Home = ({ flagImage, message, buttonText }) => {
   const navigate = useNavigate(); // Hook para navegação
@@ -10,20 +11,26 @@ const Home = ({ flagImage, message, buttonText }) => {
     navigate("/search"); //Caminho da rota
   };
 
-  const partidosData = [
-    { id: 1, nome: "Avante", logo: "/images/AVANTE.png" },
-    { id: 2, nome: "PCdoB", logo: "/images/PCdoB.png" },
-    { id: 3, nome: "PDT", logo: "/images/PDT.png" },
-    { id: 4, nome: "Podemos", logo: "/images/podemos-scaled.jpg" },
-    {
-      id: 5,
-      nome: "Progressistas",
-      logo: "/images/LOGO-PROGRESSISTAS-BRANCO.png",
-    },
-    { id: 6, nome: "PT", logo: "/images/PT.jpg" },
-    { id: 7, nome: "PSD", logo: "/images/PSD.jpg" },
-    { id: 8, nome: "PSDB", logo: "/images/PSDB.webp" },
-  ];
+  const { data, isLoading } = usePartidoData();
+
+  if (isLoading) {
+    return <span>Carregando partidos...</span>;
+  }
+
+  // const partidosData = [
+  //   { id: 1, nome: "Avante", logo: "/images/AVANTE.png" },
+  //   { id: 2, nome: "PCdoB", logo: "/images/PCdoB.png" },
+  //   { id: 3, nome: "PDT", logo: "/images/PDT.png" },
+  //   { id: 4, nome: "Podemos", logo: "/images/podemos-scaled.jpg" },
+  //   {
+  //     id: 5,
+  //     nome: "Progressistas",
+  //     logo: "/images/LOGO-PROGRESSISTAS-BRANCO.png",
+  //   },
+  //   { id: 6, nome: "PT", logo: "/images/PT.jpg" },
+  //   { id: 7, nome: "PSD", logo: "/images/PSD.jpg" },
+  //   { id: 8, nome: "PSDB", logo: "/images/PSDB.webp" },
+  // ];
 
   return (
     <>
@@ -37,7 +44,7 @@ const Home = ({ flagImage, message, buttonText }) => {
           {buttonText}
         </button>
       </main>
-      <Footer message="Informe-se vendo os partidos" partidos={partidosData} />
+      <Footer message="Informe-se vendo os partidos" partidos={data} />
     </>
   );
 };
