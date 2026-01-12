@@ -1,13 +1,18 @@
-.main-page {
+/* COLE ESTE CÓDIGO DENTRO DE: src/pages/Search.css
+  Este arquivo contém as cores originais solicitadas (#0f1e52).
+*/
+
+.search-page-wrapper {
   min-height: 100vh;
-  background-color: #0f1e52;
+  background-color: #0f1e52; /* Azul Marinho Original */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   display: flex;
   flex-direction: column;
 }
 
-.page-header {
+/* Cabeçalho */
+.site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,13 +20,26 @@
   background-color: transparent;
 }
 
-.logo-text {
+.header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.apoie-btn {
-  background-color: #4f46e5;
+.logo span {
+  color: #fbbf24; /* Amarelo RevelaAí */
+}
+
+.support-btn {
+  background-color: #4f46e5; /* Roxo Apoie */
   color: white;
   border: none;
   padding: 0.5rem 1.5rem;
@@ -30,64 +48,195 @@
   font-weight: bold;
 }
 
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem;
-  padding: 3rem 10%;
-  justify-items: center;
-}
-
-.no-results {
-  text-align: center;
-  width: 100%;
-  color: #ccc;
-  grid-column: 1 / -1;
-  margin-top: 2rem;
-}
-
-.search-container {
-  padding: 2rem;
+/* Área de Conteúdo */
+.content-container {
+  flex: 1;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.cards-grid {
+/* Abas */
+.tabs-navigation {
+  display: flex;
+  gap: 2rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.tab-item {
+  background: none;
+  border: none;
+  color: #a0aec0;
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab-item.active {
+  color: #fbbf24;
+  border-bottom: 3px solid #fbbf24;
+}
+
+/* Busca */
+.search-controls {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 3rem;
+}
+
+.search-input-group {
+  flex-grow: 1;
+  position: relative;
+}
+
+.search-input-group input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 12px 12px 40px;
+  border-radius: 12px;
+  color: white;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-submit-btn {
+  background-color: #0096ff;
+  border: none;
+  padding: 0 2rem;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Cards */
+.results-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
+  width: 100%;
   justify-items: center;
-  margin-top: 2rem;
 }
 
+.politico-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
 
-.buttons-container {
+.card-image-placeholder {
+  background-color: #1a2a6c;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.state-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.card-info {
+  padding: 1.5rem;
+}
+
+.politico-nome {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.politico-cargo {
+  color: #cbd5e0;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.card-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 15px 0;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.partido-tag {
+  font-size: 0.7rem;
+  background: #0f1e52;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.details-link {
+  background: none;
+  border: none;
+  color: #0096ff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Paginação - Estilo Marrom solicitado */
+.pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
   gap: 1rem;
+  margin: 4rem 0;
 }
 
-.buttons-container button {
-  padding: 8px 12px;
-  border: transparent;
+.pagination-container button {
+  padding: 8px 16px;
+  border: none;
   border-radius: 14px;
-  background-color: #8f6f1a;
+  background-color: #8f6f1a; /* Marrom Original */
   color: #fff;
-  font-size: 1rem;
   font-weight: 500;
+  cursor: pointer;
 }
 
-.buttons-container button:hover {
-  cursor: pointer;
+.pagination-container button:hover {
   background-color: #b38a23;
 }
 
-.buttons-container p {
+.pagination-container p {
   font-size: 1.2rem;
   border: 2px solid #b38a23;
   padding: 4px 12px;
   border-radius: 50%;
+  margin: 0;
+}
+
+.site-footer {
+  padding: 2rem;
+  text-align: center;
+  color: #718096;
+  font-size: 0.8rem;
 }

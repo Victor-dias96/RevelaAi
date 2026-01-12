@@ -32,16 +32,6 @@
   opacity: 0.8;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f8f9fa; /* Garante o fundo branco/cinza claro */
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve para separar do fundo azul */
-  position: relative; /* Garante que fique acima de elementos absolutos */
-  z-index: 10;
-
 .overlay {
   position: fixed;
   inset: 0;
@@ -69,7 +59,6 @@
   transform: translateX(0);
 }
 
-
 .sidebarHeader {
   display: flex;
   justify-content: space-between;
@@ -85,7 +74,6 @@
   font-size: 1.3rem;
   cursor: pointer;
 }
-
 
 .sidebarNav {
   display: flex;
