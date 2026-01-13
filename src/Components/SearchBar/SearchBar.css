@@ -1,0 +1,88 @@
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Removemos o estilo padrão do select para ele parecer um botão */
+.custom-select {
+  appearance: none;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  padding-right: 15px; /* Espaço para a setinha */
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+/* Reaproveitando seus estilos enviados */
+.filterButton-one,
+.filterButton-two,
+.filterButton-three {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s;
+}
+
+/* Cores específicas baseadas no seu CSS */
+.filterButton-one {
+  background-color: #fff;
+  color: #0b213f;
+  border-color: #b38a23; /* Borda Dourada */
+}
+
+.filterButton-two {
+  background-color: #fff;
+  color: #0b213f;
+  border-color: #b38a23;
+}
+
+.filterButton-three {
+  background: linear-gradient(90deg, #b38a23, #8f6f1a);
+  color: white;
+  border: none;
+}
+
+.search-input {
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  border: none;
+  width: 300px;
+  outline: none;
+  background: #fff;
+  color: #333;
+}
+
+.search-button {
+  padding: 0.6rem 2rem;
+  border-radius: 30px;
+  background: #22c55e; /* Verde Vibrante */
+  color: #fff;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.search-button:hover {
+  background: #16a34a;
+}
