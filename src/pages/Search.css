@@ -240,3 +240,39 @@
   color: #718096;
   font-size: 0.8rem;
 }
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.disabled button {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.buttons-container button {
+  padding: 8px 12px;
+  border: transparent;
+  border-radius: 14px;
+  background-color: #8f6f1a;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.buttons-container button:hover {
+  cursor: pointer;
+  background-color: #b38a23;
+}
+
+.buttons-container p {
+  font-size: 1.2rem;
+  border: 2px solid #b38a23;
+  padding: 4px 12px;
+  border-radius: 50%;
+}

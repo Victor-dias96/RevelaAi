@@ -155,7 +155,9 @@ const SearchPage = () => {
           <p className="no-results">Nenhum resultado encontrado.</p>
         )}
       </main>
-      <div className="buttons-container">
+      <div
+        className={`buttons-container ${data.length > 24 ? "" : "disabled"}`}
+      >
         {numberPage > 1 ? (
           <button onClick={handlePreviousButton}>Anterior</button>
         ) : null}
