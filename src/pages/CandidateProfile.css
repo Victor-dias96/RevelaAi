@@ -1,174 +1,289 @@
-.container {
+/* CandidateProfile.css - Estilos isolados */
+.cp-page {
+  background-color: #0f1e52;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+.cp-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2.5rem 1rem;
-
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
-}
-
-
-.profile-card {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  position: relative;
-
   display: flex;
-  gap: 2rem;
+  gap: 24px;
+  align-items: flex-start;
 }
 
-.profile-img-container img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  border: 4px solid #2ecc71;
-  object-fit: cover;
-}
-
-.psd-logo {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 60px;
-}
-
-.profile-info h1 {
-  margin-bottom: 1rem;
-  font-size: 1.4rem;
-}
-
-/* DETAILS */
-.details-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem 2rem;
-}
-
-.label {
-  display: block;
-  font-size: 0.75rem;
-  color: #777;
-}
-
-.value {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.6rem;
-}
-
-/* SOCIAL */
-.social-icons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.8rem;
-}
-
-.social-icons a {
-  width: 34px;
-  height: 34px;
-  background: #f2f2f2;
-  border-radius: 6px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #333;
-}
-
-
-.categories-list {
-  margin-top: 2rem;
-
+.cp-main {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 12px;
 }
 
-.cat-item {
+/* Profile Card */
+.cp-profile-card {
   background: white;
-  padding: 1rem 1.2rem;
   border-radius: 12px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 
+.cp-profile-img-container {
+  flex-shrink: 0;
+}
+
+.cp-profile-img-container img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #00a86b;
+}
+
+.cp-profile-info {
+  flex: 1;
+}
+
+.cp-profile-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  text-decoration: none;
-  color: #000;
-  font-weight: 500;
-
-  border-left: 5px solid #2ecc71;
+  align-items: flex-start;
+  margin-bottom: 16px;
 }
 
+.cp-profile-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a2b5f;
+  margin: 0;
+}
 
-.sidebar {
+.cp-psd-logo {
+  width: 80px;
+  height: auto;
+}
+
+.cp-details-grid {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 16px;
+}
+
+.cp-detail-column {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 8px;
 }
 
-.party-card {
-  background: linear-gradient(135deg, #0c4fa3, #0b77c2);
-  color: white;
-  border-radius: 20px;
-  padding: 2rem;
+.cp-detail-item {
+  display: flex;
+  flex-direction: column;
 }
 
-.btn-ver-partido {
-  display: inline-block;
-  margin-top: 1.5rem;
-
-  background: #0b4d3a;
-  color: white;
-  padding: 0.5rem 1.3rem;
-  border-radius: 20px;
-  text-decoration: none;
-  font-size: 0.85rem;
+.cp-label {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
 }
 
-
-.others-card {
-  background: #eef0f8;
-  border-radius: 20px;
-  padding: 1.5rem;
-}
-
-.others-title {
-  text-align: center;
-  font-size: 0.8rem;
+.cp-value {
+  font-size: 14px;
+  color: #1a2b5f;
   font-weight: 600;
-  margin-bottom: 1rem;
 }
 
-.deputy-list-item {
-  background: white;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  margin-bottom: 0.6rem;
+.cp-social-icons {
+  display: flex;
+  gap: 16px;
+}
 
+.cp-social-icons a {
+  color: #1a2b5f;
+  transition: color 0.2s;
+}
+
+.cp-social-icons a:hover {
+  color: #00a86b;
+}
+
+/* Sections */
+.cp-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cp-section-item {
+  background: white;
+  border-radius: 8px;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  transition: background 0.2s;
+  border-left: 4px solid #00a86b;
 }
 
+.cp-section-item span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a2b5f;
+}
 
+.cp-section-item svg {
+  color: #1a2b5f;
+}
+
+.cp-section-item:hover {
+  background: #f8f9fa;
+}
+
+/* Sidebar */
+.cp-sidebar {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cp-party-card {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: left;
+}
+
+.cp-party-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.cp-btn-ver-partido {
+  display: inline-block;
+  background: #1a2b5f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.cp-btn-ver-partido:hover {
+  background: #0f1e52;
+}
+
+.cp-others-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.cp-others-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2b5f;
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.cp-deputy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cp-deputy-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cp-deputy-list-item span {
+  font-size: 14px;
+  color: #1a2b5f;
+  font-weight: 500;
+}
+
+.cp-deputy-list-item svg {
+  color: #1a2b5f;
+}
+
+.cp-deputy-list-item:hover {
+  background: #e5e7eb;
+}
+
+/* Responsividade */
 @media (max-width: 900px) {
-  .container {
-    grid-template-columns: 1fr;
+  .cp-container {
+    flex-direction: column;
   }
 
-  .profile-card {
+  .cp-sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .cp-party-card,
+  .cp-others-card {
+    flex: 1;
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cp-page {
+    padding: 20px 12px;
+  }
+
+  .cp-profile-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .cp-profile-header {
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    gap: 12px;
   }
 
-  .details-grid {
-    grid-template-columns: 1fr;
+  .cp-details-grid {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .cp-detail-column {
+    align-items: center;
+  }
+
+  .cp-social-icons {
+    justify-content: center;
+  }
+
+  .cp-sidebar {
+    flex-direction: column;
+  }
+
+  .cp-party-card,
+  .cp-others-card {
+    min-width: 100%;
   }
 }
