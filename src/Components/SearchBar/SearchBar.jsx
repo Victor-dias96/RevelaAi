@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./SearchBar.css";
 
 const SearchBar = ({ abaAtiva, setAbaAtiva, filtros, setFiltros }) => {
   const [inputValue, setInputValue] = useState("");
-  // Função genérica para atualizar filtros
+
   const handleInputChange = (campo, valor) => {
     setFiltros((prev) => ({ ...prev, [campo]: valor }));
   };
@@ -12,6 +12,10 @@ const SearchBar = ({ abaAtiva, setAbaAtiva, filtros, setFiltros }) => {
     if (e.key === "Enter") {
       setFiltros((prev) => ({ ...prev, termo: inputValue }));
     }
+  };
+
+  const handleSearchClick = () => {
+    setFiltros((prev) => ({ ...prev, termo: inputValue }));
   };
 
   return (
@@ -102,18 +106,13 @@ const SearchBar = ({ abaAtiva, setAbaAtiva, filtros, setFiltros }) => {
             ? "Digite o nome do candidato..."
             : "Digite o n° ou ementa..."
         }
-        // value={filtros.termo}
-        // onChange={(e) => handleInputChange("termo", e.target.value)}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
       />
 
       {/* Botão Buscar */}
-      <button
-        className="search-button"
-        onClick={() => handleInputChange("termo", inputValue)}
-      >
+      <button className="search-button" onClick={handleSearchClick}>
         Buscar
       </button>
     </div>

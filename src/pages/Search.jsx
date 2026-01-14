@@ -72,24 +72,19 @@ const SearchPage = () => {
   }, [numberPage]);
 
   // Conexão com a API
-  const { data, isLoading, isError, error } = usePoliticoData(
-    numberPage,
-    filtros.termo,
-    filtros.estado
-  );
-
-  if (isLoading) {
-    return <span>Carregando políticos...</span>;
-  }
-
-  if (isError) {
-    return <span>Erro ao buscar dados: {error.message}</span>;
-  }
+  const {
+    data = [],
+    isLoading,
+    isError,
+    error,
+  } = usePoliticoData(numberPage, filtros.termo, filtros.estado);
 
   // console.log("Tamanho do array de políticos: ", data.length);
 
   // Filtro de busca
   const getResultados = () => {
+    if (!data) return [];
+
     if (abaAtiva === "politicos") {
       return data.filter(
         (p) =>
@@ -105,6 +100,7 @@ const SearchPage = () => {
       //   );
       // }
     }
+    return [];
   };
   const resultados = getResultados();
 
@@ -133,7 +129,11 @@ const SearchPage = () => {
       </section>
 
       <main className="cards-grid">
-        {resultados.length > 0 ? (
+        {isLoading ? (
+          <span>Carregando políticos...</span>
+        ) : isError ? (
+          <span>Erro ao buscar dados: {error.message}</span>
+        ) : resultados.length > 0 ? (
           resultados.map((item) => {
             const logoUrl =
               logoConverterMap[item.siglaPartido] ||
@@ -156,7 +156,9 @@ const SearchPage = () => {
         )}
       </main>
       <div
-        className={`buttons-container ${data.length > 24 ? "" : "disabled"}`}
+        className={`buttons-container ${
+          resultados.length < 24 ? "disabled" : ""
+        }`}
       >
         {numberPage > 1 ? (
           <button onClick={handlePreviousButton}>Anterior</button>
