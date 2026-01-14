@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Components/Card";
-import SearchBar from "../Components/SearchBar";
+import SearchBar from "../Components/SearchBar/SearchBar";
 import Header from "../Components/Header";
 import "./Search.css";
 import { usePoliticoData } from "../hooks/usePoliticoData";
@@ -86,7 +86,7 @@ const SearchPage = () => {
     return <span>Erro ao buscar dados: {error.message}</span>;
   }
 
-  console.log("Tamanho do array de políticos: ", data.length);
+  // console.log("Tamanho do array de políticos: ", data.length);
 
   // Filtro de busca
   const getResultados = () => {
@@ -94,7 +94,7 @@ const SearchPage = () => {
       return data.filter(
         (p) =>
           p.nome.toLowerCase().includes(filtros.termo.toLowerCase()) &&
-          (filtros.estado ? p.estado === filtros.estado : true)
+          (filtros.estado ? p.siglaUf === filtros.estado : true)
       );
       // } else {
       //   return bancoVotacoes.filter(
