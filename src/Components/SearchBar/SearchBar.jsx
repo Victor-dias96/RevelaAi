@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchBar.css";
 
-const SearchBar = ({
-  abaAtiva,
-  setAbaAtiva,
-  filtros,
-  setFiltros,
-  onSearch,
-}) => {
+const SearchBar = ({ abaAtiva, setAbaAtiva, filtros, setFiltros }) => {
+  const [inputValue, setInputValue] = useState("");
   // Função genérica para atualizar filtros
   const handleInputChange = (campo, valor) => {
     setFiltros((prev) => ({ ...prev, [campo]: valor }));
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      setFiltros((prev) => ({ ...prev, termo: inputValue }));
+    }
   };
 
   return (
@@ -36,8 +37,33 @@ const SearchBar = ({
             className="custom-select"
           >
             <option value="">Estado (Todos)</option>
-            <option value="Sergipe">Sergipe</option>
-            <option value="Bahia">Bahia</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AM">Amazonas</option>
+            <option value="AP">Amapá</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="PR">Paraná</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SE">Sergipe</option>
+            <option value="SP">São Paulo</option>
+            <option value="TO">Tocantins</option>
           </select>
         </div>
       )}
@@ -76,12 +102,18 @@ const SearchBar = ({
             ? "Digite o nome do candidato..."
             : "Digite o n° ou ementa..."
         }
-        value={filtros.termo}
-        onChange={(e) => handleInputChange("termo", e.target.value)}
+        // value={filtros.termo}
+        // onChange={(e) => handleInputChange("termo", e.target.value)}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
 
       {/* Botão Buscar */}
-      <button className="search-button" onClick={onSearch}>
+      <button
+        className="search-button"
+        onClick={() => handleInputChange("termo", inputValue)}
+      >
         Buscar
       </button>
     </div>

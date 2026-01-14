@@ -1,3 +1,5 @@
+// Aqui vai representar o GET para receber todos os partidos
+
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
