@@ -63,6 +63,10 @@ const SearchPage = () => {
     tema: "",
   });
 
+  useEffect(() => {
+    setNumberPage(1);
+  }, [filtros, abaAtiva]);
+
   // Rola a tela para o topo quando a página muda
   useEffect(() => {
     window.scrollTo({
@@ -157,7 +161,7 @@ const SearchPage = () => {
       </main>
       <div
         className={`buttons-container ${
-          resultados.length < 24 ? "disabled" : ""
+          resultados?.length < 24 ? "disabled" : ""
         }`}
       >
         {numberPage > 1 ? (
