@@ -1,4 +1,3 @@
-/* CandidateProfile.css - Estilos isolados */
 .cp-page {
   background-color: #0f1e52;
   min-height: 100vh;
@@ -117,16 +116,20 @@
   gap: 8px;
 }
 
-.cp-section-item {
+.cp-section-wrapper {
   background: white;
   border-radius: 8px;
+  border-left: 4px solid #00a86b;
+  overflow: hidden;
+}
+
+.cp-section-item {
   padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   transition: background 0.2s;
-  border-left: 4px solid #00a86b;
 }
 
 .cp-section-item span {
@@ -141,6 +144,38 @@
 
 .cp-section-item:hover {
   background: #f8f9fa;
+}
+
+.cp-chevron {
+  transition: transform 0.3s ease;
+}
+
+.cp-chevron-rotated {
+  transform: rotate(180deg);
+}
+
+.cp-section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    padding 0.3s ease;
+  background: white;
+  padding: 0 24px;
+}
+
+.cp-section-content-open {
+  max-height: 300px;
+  padding: 0 24px 16px 24px;
+}
+
+.cp-section-content p {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
 }
 
 /* Sidebar */

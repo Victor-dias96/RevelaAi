@@ -1,13 +1,30 @@
+import { useState } from 'react';
+import {
+  Facebook,
+  Instagram,
+  Youtube,
+  ChevronDown,
+  ChevronRight,
+} from 'lucide-react';
 import './CandidateProfile.css';
-import { ChevronRight, Facebook, Instagram, Youtube } from 'lucide-react';
 
-const CandidatePhoto = './Profile_image.png';
-const CandidatePartidoLogo = './PSD.jpg';
-const CandidateSection = ({ title }) => {
+const CandidateSection = ({ title, content }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="cp-section-item">
-      <span>{title}</span>
-      <ChevronRight size={20} />
+    <div className={`cp-section-wrapper ${isOpen ? 'cp-section-open' : ''}`}>
+      <div className="cp-section-item" onClick={() => setIsOpen(!isOpen)}>
+        <span>{title}</span>
+        <ChevronDown
+          size={20}
+          className={`cp-chevron ${isOpen ? 'cp-chevron-rotated' : ''}`}
+        />
+      </div>
+      <div
+        className={`cp-section-content ${isOpen ? 'cp-section-content-open' : ''}`}
+      >
+        <p>{content}</p>
+      </div>
     </div>
   );
 };
@@ -19,14 +36,19 @@ const CandidateProfile = () => {
         <main className="cp-main">
           <section className="cp-profile-card">
             <div className="cp-profile-img-container">
-              <img src={CandidatePhoto} alt="Delegada Katarina" />
+              <img
+                /* foto da candidato (a) */
+                src=""
+                alt="Delegada Katarina"
+              />
             </div>
 
             <div className="cp-profile-info">
               <div className="cp-profile-header">
                 <h1>Delegada Katarina</h1>
                 <img
-                  src={CandidatePartidoLogo}
+                  /* logo do partido */
+                  src=""
                   className="cp-psd-logo"
                   alt="PSD 55"
                 />
@@ -73,12 +95,30 @@ const CandidateProfile = () => {
           </section>
 
           <div className="cp-sections">
-            <CandidateSection title="Despesas" />
-            <CandidateSection title="Frentes" />
-            <CandidateSection title="Histórico" />
-            <CandidateSection title="Mandatos Externos" />
-            <CandidateSection title="Ocupações" />
-            <CandidateSection title="Mesa" />
+            <CandidateSection
+              title="Despesas"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            />
+            <CandidateSection
+              title="Frentes"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
+            />
+            <CandidateSection
+              title="Histórico"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
+            />
+            <CandidateSection
+              title="Mandatos Externos"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+            />
+            <CandidateSection
+              title="Ocupações"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore."
+            />
+            <CandidateSection
+              title="Mesa"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur."
+            />
           </div>
         </main>
 
