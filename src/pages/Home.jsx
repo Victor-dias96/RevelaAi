@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import Header from "../Components/Header.jsx";
 import Footer from "../Components/Footer.jsx";
 import "./Home.css";
 import { usePartidoData } from "../hooks/usePartidoData.js";
@@ -8,7 +7,7 @@ const Home = ({ flagImage, message, buttonText }) => {
   const navigate = useNavigate(); // Hook para navegação
 
   const onNavigateToSearch = () => {
-    navigate("/search"); //Caminho da rota
+    navigate('/search'); //Caminho da rota
   };
 
   const { data, isLoading } = usePartidoData();
@@ -34,7 +33,6 @@ const Home = ({ flagImage, message, buttonText }) => {
 
   return (
     <>
-      <Header />
       <main className="main">
         <section className="flagSection">
           <img src={flagImage} alt="Bandeira do Brasil" />

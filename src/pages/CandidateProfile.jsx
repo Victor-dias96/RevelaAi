@@ -1,115 +1,161 @@
-import Header from "../Components/Header.jsx";
-import "./CandidateProfile.css";
+import { useState } from 'react';
+import {
+  Facebook,
+  Instagram,
+  Youtube,
+  ChevronDown,
+  ChevronRight,
+} from 'lucide-react';
+import './CandidateProfile.css';
+
+const CandidateSection = ({ title, content }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className={`cp-section-wrapper ${isOpen ? 'cp-section-open' : ''}`}>
+      <div className="cp-section-item" onClick={() => setIsOpen(!isOpen)}>
+        <span>{title}</span>
+        <ChevronDown
+          size={20}
+          className={`cp-chevron ${isOpen ? 'cp-chevron-rotated' : ''}`}
+        />
+      </div>
+      <div
+        className={`cp-section-content ${isOpen ? 'cp-section-content-open' : ''}`}
+      >
+        <p>{content}</p>
+      </div>
+    </div>
+  );
+};
 
 const CandidateProfile = () => {
   return (
-    <>
-    <Header />
-    <div className="container">
-      <main>
-        <section className="profile-card">
-          <div className="profile-img-container">
-            <img
-              src="/images/Delegada Katarina.jpg"
-              alt="Delegada Katarina"
+    <div className="cp-page">
+      <div className="cp-container">
+        <main className="cp-main">
+          <section className="cp-profile-card">
+            <div className="cp-profile-img-container">
+              <img
+                /* foto da candidato (a) */
+                src=""
+                alt="Delegada Katarina"
+              />
+            </div>
+
+            <div className="cp-profile-info">
+              <div className="cp-profile-header">
+                <h1>Delegada Katarina</h1>
+                <img
+                  /* logo do partido */
+                  src=""
+                  className="cp-psd-logo"
+                  alt="PSD 55"
+                />
+              </div>
+
+              <div className="cp-details-grid">
+                <div className="cp-detail-column">
+                  <div className="cp-detail-item">
+                    <span className="cp-label">Nome Civil</span>
+                    <span className="cp-value">
+                      Katarina Feitoza Lima Santana
+                    </span>
+                  </div>
+                  <div className="cp-detail-item">
+                    <span className="cp-label">UF</span>
+                    <span className="cp-value">SE</span>
+                  </div>
+                </div>
+
+                <div className="cp-detail-column">
+                  <div className="cp-detail-item">
+                    <span className="cp-label">Situação</span>
+                    <span className="cp-value">Exercício</span>
+                  </div>
+                  <div className="cp-detail-item">
+                    <span className="cp-label">Condição Eleitoral</span>
+                    <span className="cp-value">Titular</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="cp-social-icons">
+                <a href="#" aria-label="Facebook">
+                  <Facebook size={20} />
+                </a>
+                <a href="#" aria-label="Instagram">
+                  <Instagram size={20} />
+                </a>
+                <a href="#" aria-label="YouTube">
+                  <Youtube size={20} />
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <div className="cp-sections">
+            <CandidateSection
+              title="Despesas"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            />
+            <CandidateSection
+              title="Frentes"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
+            />
+            <CandidateSection
+              title="Histórico"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
+            />
+            <CandidateSection
+              title="Mandatos Externos"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+            />
+            <CandidateSection
+              title="Ocupações"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore."
+            />
+            <CandidateSection
+              title="Mesa"
+              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur."
             />
           </div>
+        </main>
 
-          <div className="profile-info">
-            <h1>Delegada Katarina</h1>
-
-            <div className="details-grid">
-              <div className="detail-item">
-                <span className="label">Nome Civil</span>
-                <span className="value">
-                  Katarina Feitoza Lima Santana
-                </span>
-
-                <span className="label">UF</span>
-                <span className="value">SE</span>
-              </div>
-
-              <div className="detail-item">
-                <span className="label">Situação</span>
-                <span className="value">Exercício</span>
-
-                <span className="label">Condição Eleitoral</span>
-                <span className="value">Titular</span>
-              </div>
-            </div>
-
-            <div className="social-icons">
-              <a href="#" aria-label="Facebook">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" aria-label="YouTube">
-                <i className="fab fa-youtube"></i>
-              </a>
-            </div>
-          </div>
-
-          <img
-            src="/images/PSD Logo.png"
-            className="psd-logo"
-            alt="PSD 55"
-          />
-        </section>
-
-        <nav className="categories-list">
-          {[
-            "Despesas",
-            "Frentes",
-            "Histórico",
-            "Mandatos Externos",
-            "Ocupações",
-            "Mesa",
-          ].map((item) => (
-            <a href="#" className="cat-item" key={item}>
-              {item}
-              <i className="fas fa-chevron-right"></i>
+        <aside className="cp-sidebar">
+          <div className="cp-party-card">
+            <h3>
+              Partido Social
+              <br />
+              Democrata
+            </h3>
+            <a href="#" className="cp-btn-ver-partido">
+              Ver Partido
             </a>
-          ))}
-        </nav>
-      </main>
-
-      <aside className="sidebar">
-        <div className="party-card">
-          <h3>
-            Partido Social <br /> Democrata
-          </h3>
-          <a href="#" className="btn-ver-partido">
-            Ver Partido
-          </a>
-        </div>
-
-        <div className="others-card">
-          <div className="others-title">Outros Deputados</div>
-
-          <div className="deputy-list">
-            {[
-              "Fabio Reis",
-              "Maisa Mitidieri",
-              "Luciano Bispo",
-              "Jeferson Andrade",
-              "Adailton Martins",
-              "Manuel Marcos",
-            ].map((name) => (
-              <div className="deputy-list-item" key={name}>
-                {name}
-                <i className="fas fa-chevron-right"></i>
-              </div>
-            ))}
           </div>
-        </div>
-      </aside>
+
+          <div className="cp-others-card">
+            <div className="cp-others-title">OUTROS DEPUTADOS</div>
+            <div className="cp-deputy-list">
+              {[
+                'Fabio Reis',
+                'Maisa Mitidieri',
+                'Luciano Bispo',
+                'Jeferson Andrade',
+                'Adailton Martins',
+                'Manuel Marcos',
+              ].map((name) => (
+                <div key={name} className="cp-deputy-list-item">
+                  <span>{name}</span>
+                  <ChevronRight size={16} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
-    </>
   );
-}
-
-
+};
 
 export default CandidateProfile;

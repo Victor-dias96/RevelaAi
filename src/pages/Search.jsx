@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Components/Card";
 import SearchBar from "../Components/SearchBar/SearchBar";
-import Header from "../Components/Header";
 import "./Search.css";
 import { usePoliticoData } from "../hooks/usePoliticoData";
 import { logoConverterMap } from "../utils/logoConverter";
@@ -58,9 +57,9 @@ const SearchPage = () => {
   const [numberPage, setNumberPage] = useState(1);
   const [abaAtiva, setAbaAtiva] = useState("politicos");
   const [filtros, setFiltros] = useState({
-    termo: "",
-    estado: "",
-    tema: "",
+    termo: '',
+    estado: '',
+    tema: '',
   });
 
   useEffect(() => {
@@ -121,8 +120,6 @@ const SearchPage = () => {
 
   return (
     <div className="main-page">
-      <Header />
-
       <section className="search-section">
         <SearchBar
           abaAtiva={abaAtiva}
