@@ -1,13 +1,53 @@
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  text-align: center;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #000;
+}
+
+.position {
+  color: #666;
+  margin: 0.25rem 0;
+}
+
+.state {
+  color: #888;
+  margin: 0.25rem 0;
+}
+
+.party-logo {
+  max-width: 80px;
+  height: auto;
+  margin-top: 1rem;
+}
+
 /* Container Geral do Card */
-.card-politico {
+/* .card-politico {
   background-color: #ffffff;
   border-radius: 20px;
   width: 100%;
   max-width: 280px;
   min-height: 320px;
   position: relative;
-  overflow: hidden; /* Importante para cortar o arco */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,22 +57,22 @@
 
 .card-politico:hover {
   transform: translateY(-5px);
-}
+} */
 
 /* O Arco Cinza (Design Element) */
-.card-header-arc {
+/* .card-header-arc {
   position: absolute;
-  top: -60px; /* Puxa para cima */
+  top: -60px;
   left: -50%;
   width: 200%;
   height: 180px;
-  background-color: #dfe6e9; /* Cinza claro azulado */
-  border-radius: 50%; /* Faz virar um círculo/arco */
+  background-color: #dfe6e9; 
+  border-radius: 50%; 
   z-index: 1;
-}
+} */
 
 /* Conteúdo (Fica acima do arco) */
-.card-content {
+/* .card-content {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -41,16 +81,16 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-}
+} */
 
 /* Foto do Político */
-.avatar-wrapper {
+/* .avatar-wrapper {
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  border: 5px solid #ffffff; /* Borda branca grossa */
+  border: 5px solid #ffffff; 
   overflow: hidden;
-  margin-top: 20px; /* Ajuste para centralizar no arco */
+  margin-top: 20px; 
   margin-bottom: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background: #ccc;
@@ -61,10 +101,10 @@
   height: 100%;
   object-fit: cover;
   object-position: top;
-}
+} */
 
 /* Tipografia */
-.nome {
+/* .nome {
   font-size: 1.2rem;
   font-weight: 800;
   color: #1a1a1a;
@@ -82,11 +122,11 @@
   font-size: 0.85rem;
   color: #b2bec3;
   margin-bottom: 25px;
-}
+} */
 
 /* Área do Partido (Rodapé do Card) */
-.partido-container {
-  margin-top: auto; /* Empurra para o fundo do card */
+/* .partido-container {
+  margin-top: auto;
   height: 40px;
   display: flex;
   align-items: center;
@@ -103,13 +143,13 @@
 .partido-text {
   font-weight: bold;
   color: #2d3436;
-}
+} */
 
 /* --- ESTILO SIMPLES PARA O CARD DE VOTAÇÃO --- */
 /* ... código anterior do card-politico ... */
 
 /* --- AJUSTE PARA O CARD DE VOTAÇÃO --- */
-.card-votacao {
+/* .card-votacao {
   background: white;
   border-radius: 15px;
   padding: 20px;
@@ -119,12 +159,9 @@
   flex-direction: column;
   gap: 10px;
   align-items: center;
-
-  /* ADICIONE ISSO AQUI: */
-  color: #1a1a1a; /* Força todo texto dentro do card a ser escuro */
+  color: #1a1a1a;
 }
 
-/* Garante que o título e parágrafos tenham cores específicas */
 .card-votacao h3 {
   color: #000;
   font-weight: 800;
@@ -134,8 +171,6 @@
   color: #555;
   font-style: italic;
 }
-
-/* ... restante do código ... */
 
 .badge {
   padding: 5px 10px;
@@ -166,4 +201,4 @@
 .voto-nao {
   background-color: #fad3d3;
   color: #e74c3c;
-}
+} */

@@ -12,20 +12,58 @@
 
 .partidos {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  overflow-x: auto;
+  justify-content: flex-start;
+  padding: 5px 0;
   gap: 1rem;
+  scroll-behavior: smooth;
+}
+
+.partidos::-webkit-scrollbar {
+  display: none;
 }
 
 .partidos img {
   background: rgb(124, 124, 124);
   border-radius: 10px;
   padding: 0.5rem;
-  height: 60px;
+  height: 80px;
   width: auto;
   transition: transform 0.3s;
 }
 
 .partidos img:hover {
   transform: scale(1.05);
+}
+
+.buttons {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.buttons button {
+  background-color: #8f6f1a;
+  border: none;
+  border-radius: 50%;
+  padding: 4px 4px 4px 6px;
+}
+
+.buttons button:hover {
+  background-color: #a8831e;
+}
+
+.buttons button img {
+  height: 24px;
+  cursor: pointer;
+}
+
+.buttons button:first-child {
+  padding: 4px 6px 4px 4px;
+}
+
+.buttons button:first-child img {
+  transform: rotate(180deg);
 }
