@@ -1,12 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Search from './pages/Search';
-import CandidateProfile from './pages/CandidateProfile';
-import Header from './Components/Header';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import CandidateProfile from "./pages/CandidateProfile";
+import Header from "./Components/Header";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
       <Routes>
         <Route
@@ -20,9 +20,9 @@ function App() {
           }
         />
         <Route path="/search" element={<Search />} />
-        <Route path="/CandidateProfile" element={<CandidateProfile />} />
+        <Route path="/CandidateProfile/:id" element={<CandidateProfile />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 

@@ -1,27 +1,30 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   Facebook,
   Instagram,
   Youtube,
   ChevronDown,
   ChevronRight,
-} from 'lucide-react';
-import './CandidateProfile.css';
+} from "lucide-react";
+import "./CandidateProfile.css";
+import { usePoliticoIDData } from "../hooks/usePoliticoIDData";
+import { logoConverterMap } from "../utils/logoConverter";
 
 const CandidateSection = ({ title, content }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`cp-section-wrapper ${isOpen ? 'cp-section-open' : ''}`}>
+    <div className={`cp-section-wrapper ${isOpen ? "cp-section-open" : ""}`}>
       <div className="cp-section-item" onClick={() => setIsOpen(!isOpen)}>
         <span>{title}</span>
         <ChevronDown
           size={20}
-          className={`cp-chevron ${isOpen ? 'cp-chevron-rotated' : ''}`}
+          className={`cp-chevron ${isOpen ? "cp-chevron-rotated" : ""}`}
         />
       </div>
       <div
-        className={`cp-section-content ${isOpen ? 'cp-section-content-open' : ''}`}
+        className={`cp-section-content ${isOpen ? "cp-section-content-open" : ""}`}
       >
         <p>{content}</p>
       </div>
@@ -30,6 +33,23 @@ const CandidateSection = ({ title, content }) => {
 };
 
 const CandidateProfile = () => {
+  const { id } = useParams();
+
+  const { data, isLoading, isError, error } = usePoliticoIDData(id);
+
+  if (isLoading) {
+    return <div>Carregando perfil do candidato...</div>;
+  }
+
+  if (isError) {
+    return <div>Erro: {error.message}</div>;
+  }
+
+  const dadosEspecificos = data.ultimoStatus;
+  const logoUrl =
+    logoConverterMap[dadosEspecificos.siglaPartido] ||
+    logoConverterMap["DEFAULT"];
+
   return (
     <div className="cp-page">
       <div className="cp-container">
@@ -38,19 +58,19 @@ const CandidateProfile = () => {
             <div className="cp-profile-img-container">
               <img
                 /* foto da candidato (a) */
-                src=""
-                alt="Delegada Katarina"
+                src={dadosEspecificos.urlFoto}
+                alt={dadosEspecificos.nome}
               />
             </div>
 
             <div className="cp-profile-info">
               <div className="cp-profile-header">
-                <h1>Delegada Katarina</h1>
+                <h1>{dadosEspecificos.nome}</h1>
                 <img
                   /* logo do partido */
-                  src=""
+                  src={logoUrl}
+                  alt={dadosEspecificos.siglaPartido}
                   className="cp-psd-logo"
-                  alt="PSD 55"
                 />
               </div>
 
@@ -58,24 +78,26 @@ const CandidateProfile = () => {
                 <div className="cp-detail-column">
                   <div className="cp-detail-item">
                     <span className="cp-label">Nome Civil</span>
-                    <span className="cp-value">
-                      Katarina Feitoza Lima Santana
-                    </span>
+                    <span className="cp-value">{data.nomeCivil}</span>
                   </div>
                   <div className="cp-detail-item">
                     <span className="cp-label">UF</span>
-                    <span className="cp-value">SE</span>
+                    <span className="cp-value">{dadosEspecificos.siglaUf}</span>
                   </div>
                 </div>
 
                 <div className="cp-detail-column">
                   <div className="cp-detail-item">
                     <span className="cp-label">Situação</span>
-                    <span className="cp-value">Exercício</span>
+                    <span className="cp-value">
+                      {dadosEspecificos.situacao}
+                    </span>
                   </div>
                   <div className="cp-detail-item">
                     <span className="cp-label">Condição Eleitoral</span>
-                    <span className="cp-value">Titular</span>
+                    <span className="cp-value">
+                      {dadosEspecificos.condicaoEleitoral}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -138,12 +160,12 @@ const CandidateProfile = () => {
             <div className="cp-others-title">OUTROS DEPUTADOS</div>
             <div className="cp-deputy-list">
               {[
-                'Fabio Reis',
-                'Maisa Mitidieri',
-                'Luciano Bispo',
-                'Jeferson Andrade',
-                'Adailton Martins',
-                'Manuel Marcos',
+                "Fabio Reis",
+                "Maisa Mitidieri",
+                "Luciano Bispo",
+                "Jeferson Andrade",
+                "Adailton Martins",
+                "Manuel Marcos",
               ].map((name) => (
                 <div key={name} className="cp-deputy-list-item">
                   <span>{name}</span>
