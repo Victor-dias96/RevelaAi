@@ -38,7 +38,7 @@ const CandidateProfile = () => {
             <div className="cp-profile-img-container">
               <img
                 /* foto da candidato (a) */
-                src=""
+                src="/images/Profile_image.png"
                 alt="Delegada Katarina"
               />
             </div>
@@ -48,7 +48,7 @@ const CandidateProfile = () => {
                 <h1>Delegada Katarina</h1>
                 <img
                   /* logo do partido */
-                  src=""
+                  src="/images/logo_default.png"
                   className="cp-psd-logo"
                   alt="PSD 55"
                 />
@@ -129,9 +129,6 @@ const CandidateProfile = () => {
               <br />
               Democrata
             </h3>
-            <a href="#" className="cp-btn-ver-partido">
-              Ver Partido
-            </a>
           </div>
 
           <div className="cp-others-card">

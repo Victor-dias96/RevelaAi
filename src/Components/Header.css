@@ -67,6 +67,10 @@
   font-weight: 600;
   border-bottom: 1px solid #eee;
 }
+.sidebarHeader span {
+  color: #333;
+  font-size: 1.2rem;
+}
 
 .sidebarHeader button {
   background: none;
