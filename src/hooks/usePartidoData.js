@@ -1,13 +1,11 @@
 // Aqui vai representar o GET para receber todos os partidos
 
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-
-const API_URL = "http://localhost:8080";
+import api from "../services/api";
 
 const fetchData = async ({ queryKey }) => {
   const [_key] = queryKey;
-  const { data } = await axios.get(`${API_URL}/api/partido`);
+  const { data } = await api.get("/api/partido");
   return data.dados;
 };
 
