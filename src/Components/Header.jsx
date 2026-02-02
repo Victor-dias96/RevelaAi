@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -13,9 +15,10 @@ export default function Header() {
 
         <h1 className="logo">RevelaAi</h1>
 
-        <button className="supportBtn">Apoie</button>
+        <button className="supportBtn" onClick={() => navigate('/support')}>
+          Apoie
+        </button>
       </header>
-
       {/* Overlay */}
       {isOpen && <div className="overlay" onClick={() => setIsOpen(false)} />}
 

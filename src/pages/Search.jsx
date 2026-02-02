@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Card from "../Components/Card";
-import SearchBar from "../Components/SearchBar/SearchBar";
-import "./Search.css";
-import { usePoliticoData } from "../hooks/usePoliticoData";
-import { logoConverterMap } from "../utils/logoConverter";
+import React, { useEffect, useState } from 'react';
+import Card from '../Components/Card';
+import SearchBar from '../Components/SearchBar/SearchBar';
+import './Search.css';
+import { usePoliticoData } from '../hooks/usePoliticoData';
+import { logoConverterMap } from '../utils/logoConverter';
 
 // const bancoPoliticos = [
 //   {
@@ -55,7 +55,7 @@ import { logoConverterMap } from "../utils/logoConverter";
 
 const SearchPage = () => {
   const [numberPage, setNumberPage] = useState(1);
-  const [abaAtiva, setAbaAtiva] = useState("politicos");
+  const [abaAtiva, setAbaAtiva] = useState('politicos');
   const [filtros, setFiltros] = useState({
     termo: '',
     estado: '',
@@ -70,7 +70,7 @@ const SearchPage = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, [numberPage]);
 
@@ -88,7 +88,7 @@ const SearchPage = () => {
   const getResultados = () => {
     if (!data) return [];
 
-    if (abaAtiva === "politicos") {
+    if (abaAtiva === 'politicos') {
       return data.filter(
         (p) =>
           p.nome.toLowerCase().includes(filtros.termo.toLowerCase()) &&
@@ -128,7 +128,7 @@ const SearchPage = () => {
           setFiltros={setFiltros}
         />
       </section>
-
+      {/*  Seção de cards */}
       <main className="cards-grid">
         {isLoading ? (
           <span>Carregando políticos...</span>
@@ -138,7 +138,7 @@ const SearchPage = () => {
           resultados.map((item) => {
             const logoUrl =
               logoConverterMap[item.siglaPartido] ||
-              logoConverterMap["DEFAULT"];
+              logoConverterMap['DEFAULT'];
 
             return (
               <Card
@@ -158,7 +158,7 @@ const SearchPage = () => {
       </main>
       <div
         className={`buttons-container ${
-          resultados?.length < 24 ? "disabled" : ""
+          resultados?.length < 24 ? 'disabled' : ''
         }`}
       >
         {numberPage > 1 ? (

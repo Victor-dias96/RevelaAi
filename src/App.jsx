@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import CandidateProfile from './pages/CandidateProfile';
+import Support from './pages/Support';
 import Header from './Components/Header';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         />
         <Route path="/search" element={<Search />} />
         <Route path="/CandidateProfile" element={<CandidateProfile />} />
+        <Route path="/support" element={<Support />} />
       </Routes>
     </Router>
   );
