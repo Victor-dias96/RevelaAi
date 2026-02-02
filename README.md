@@ -22,13 +22,6 @@
 
 ---
 
-## 🖼️ Screenshots
-
-<div align="center">
-  <img src="public/images/Brasil.webp" alt="Bandeira do Brasil" width="180"/>
-  <img src="public/images/PT.jpg" alt="PT Logo" width="180"/>
-  <img src="public/images/PSDB.webp" alt="PSDB Logo" width="180"/>
-</div>
 
 ---
 
@@ -42,7 +35,7 @@ npm install
 npm run dev
 ```
 
-Acesse [http://localhost:5173](http://localhost:5173) para usar o RevelaAi!
+
 
 ---
 
