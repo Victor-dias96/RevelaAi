@@ -105,9 +105,6 @@ const CandidateProfile = () => {
               <br />
               Democrata
             </h3>
-            <a href="#" className="cp-btn-ver-partido">
-              Ver Partido
-            </a>
           </div>
 
           <div className="cp-others-card">
