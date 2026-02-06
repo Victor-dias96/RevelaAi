@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   Facebook,
@@ -10,27 +9,12 @@ import {
 import "./CandidateProfile.css";
 import { usePoliticoIDData } from "../hooks/usePoliticoIDData";
 import { logoConverterMap } from "../utils/logoConverter";
-
-const CandidateSection = ({ title, content }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className={`cp-section-wrapper ${isOpen ? "cp-section-open" : ""}`}>
-      <div className="cp-section-item" onClick={() => setIsOpen(!isOpen)}>
-        <span>{title}</span>
-        <ChevronDown
-          size={20}
-          className={`cp-chevron ${isOpen ? "cp-chevron-rotated" : ""}`}
-        />
-      </div>
-      <div
-        className={`cp-section-content ${isOpen ? "cp-section-content-open" : ""}`}
-      >
-        <p>{content}</p>
-      </div>
-    </div>
-  );
-};
+import CandidateExpenses from "../Components/CandidateExpenses";
+import CandidateFronts from "../Components/CandidateFronts";
+import CandidateHistory from "../Components/CandidateHistory";
+import CandidateExternalMandates from "../Components/CandidateExternalMandates";
+import CandidateOccupations from "../Components/CandidateOccupations";
+import CandidateOrgans from "../Components/CandidateOrgans";
 
 const CandidateProfile = () => {
   const { id } = useParams();
@@ -101,46 +85,16 @@ const CandidateProfile = () => {
                   </div>
                 </div>
               </div>
-
-              <div className="cp-social-icons">
-                <a href="#" aria-label="Facebook">
-                  <Facebook size={20} />
-                </a>
-                <a href="#" aria-label="Instagram">
-                  <Instagram size={20} />
-                </a>
-                <a href="#" aria-label="YouTube">
-                  <Youtube size={20} />
-                </a>
-              </div>
             </div>
           </section>
 
           <div className="cp-sections">
-            <CandidateSection
-              title="Despesas"
-              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            />
-            <CandidateSection
-              title="Frentes"
-              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
-            />
-            <CandidateSection
-              title="Histórico"
-              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
-            />
-            <CandidateSection
-              title="Mandatos Externos"
-              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-            />
-            <CandidateSection
-              title="Ocupações"
-              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore."
-            />
-            <CandidateSection
-              title="Mesa"
-              content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur."
-            />
+            <CandidateExpenses id={id} />
+            <CandidateFronts id={id} />
+            <CandidateHistory id={id} />
+            <CandidateExternalMandates id={id} />
+            <CandidateOccupations id={id} />
+            <CandidateOrgans id={id} />
           </div>
         </main>
 

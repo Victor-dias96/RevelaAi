@@ -1,0 +1,60 @@
+/* Sections */
+.cp-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cp-section-wrapper {
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #00a86b;
+  overflow: hidden;
+}
+
+.cp-section-item {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cp-section-item span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a2b5f;
+}
+
+.cp-section-item svg {
+  color: #1a2b5f;
+}
+
+.cp-section-item:hover {
+  background: #f8f9fa;
+}
+
+.cp-chevron {
+  transition: transform 0.3s ease;
+}
+
+.cp-chevron-rotated {
+  transform: rotate(180deg);
+}
+
+.cp-section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    padding 0.3s ease;
+  background: white;
+  padding: 0 24px;
+}
+
+.cp-section-content-open {
+  max-height: fit-content;
+  padding: 0 24px 16px 24px;
+  border-top: 1px solid #e5e7eb;
+}

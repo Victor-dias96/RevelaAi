@@ -1,0 +1,93 @@
+.conteudo-detalhes-politico {
+  border: 1px solid #00a86b;
+  border-radius: 8px;
+  margin: 12px 0;
+  padding: 12px;
+}
+
+h3 {
+  color: #1a2b5f;
+  font-size: 18px;
+  margin: 0;
+}
+
+p {
+  margin: 8px 0;
+}
+
+.detalhes-cinza {
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detalhes-cinza .card-titular {
+  padding: 4px 12px;
+  background-color: #00d98b;
+  color: #fdfdfd;
+  border-radius: 24px;
+}
+
+.detalhe-linha {
+  color: #1a2b5f;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+}
+
+.detalhe-linha p {
+  font-weight: 500;
+}
+
+.detalhe-linha .tipo-info {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.detalhe-linha p span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.valor-despesa {
+  padding: 4px 12px;
+  background-color: #1a2b5f;
+  color: #fdfdfd;
+  border-radius: 24px;
+}
+
+.detalhe-linha a {
+  color: #1a2b5f;
+}
+
+.paginacao-botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.paginacao-botoes {
+  color: #1a2b5f;
+}
+
+.paginacao-botoes button {
+  padding: 4px 8px;
+  border: transparent;
+  border-radius: 14px;
+  background-color: #8f6f1a;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.paginacao-botoes button:hover {
+  opacity: 75%;
+  cursor: pointer;
+}
