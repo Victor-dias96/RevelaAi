@@ -4,62 +4,15 @@ import SearchBar from "../Components/SearchBar/SearchBar";
 import "./Search.css";
 import { usePoliticoData } from "../hooks/usePoliticoData";
 import { logoConverterMap } from "../utils/logoConverter";
-
-// const bancoPoliticos = [
-//   {
-//     id: 1,
-//     nome: "Áurea Ribeiro",
-//     cargo: "Deputado Estadual",
-//     estado: "Sergipe",
-//     partido: "Republicanos",
-//     foto: "/images/Aurea-Ribeiro.jpg",
-//   },
-//   {
-//     id: 2,
-//     nome: "Adailton Martins",
-//     cargo: "Deputado Federal",
-//     estado: "Sergipe",
-//     partido: "PSD",
-//     foto: "/images/Adailton-Martins.jpg",
-//   },
-//   {
-//     id: 3,
-//     nome: "Marcos Aurélio",
-//     cargo: "Senador",
-//     estado: "Bahia",
-//     partido: "Republicanos",
-//     foto: "https://randomuser.me/api/portraits/men/44.jpg",
-//   },
-// ];
-
-// const bancoVotacoes = [
-//   {
-//     id: 1,
-//     tipo: "PL",
-//     num: "1234/24",
-//     tema: "Educação",
-//     ementa: "Dispõe sobre o incentivo à cultura digital nas escolas.",
-//     autor: "Dep. Silva",
-//     voto: "Sim",
-//   },
-//   {
-//     id: 2,
-//     tipo: "PEC",
-//     num: "45/23",
-//     tema: "Economia",
-//     ementa: "Altera o sistema tributário nacional.",
-//     autor: "Governo",
-//     voto: "Não",
-//   },
-// ];
+import { Link } from "react-router-dom";
 
 const SearchPage = () => {
   const [numberPage, setNumberPage] = useState(1);
   const [abaAtiva, setAbaAtiva] = useState("politicos");
   const [filtros, setFiltros] = useState({
-    termo: '',
-    estado: '',
-    tema: '',
+    termo: "",
+    estado: "",
+    tema: "",
   });
 
   useEffect(() => {
@@ -92,7 +45,7 @@ const SearchPage = () => {
       return data.filter(
         (p) =>
           p.nome.toLowerCase().includes(filtros.termo.toLowerCase()) &&
-          (filtros.estado ? p.siglaUf === filtros.estado : true)
+          (filtros.estado ? p.siglaUf === filtros.estado : true),
       );
       // } else {
       //   return bancoVotacoes.filter(
@@ -141,15 +94,17 @@ const SearchPage = () => {
               logoConverterMap["DEFAULT"];
 
             return (
-              <Card
-                key={item.id}
-                foto={item.urlFoto}
-                nome={item.nome}
-                cargo={item.cargo}
-                estado={item.siglaUf}
-                partido={item.partido}
-                logoPartido={logoUrl}
-              />
+              <Link to={`/CandidateProfile/${item.id}`}>
+                <Card
+                  key={item.id}
+                  foto={item.urlFoto}
+                  nome={item.nome}
+                  cargo={item.cargo}
+                  estado={item.siglaUf}
+                  partido={item.partido}
+                  logoPartido={logoUrl}
+                />
+              </Link>
             );
           })
         ) : (

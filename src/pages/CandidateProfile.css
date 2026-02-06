@@ -2,7 +2,7 @@
   background-color: #0f1e52;
   min-height: 100vh;
   padding: 40px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
 }
 
@@ -93,89 +93,6 @@
   font-size: 14px;
   color: #1a2b5f;
   font-weight: 600;
-}
-
-.cp-social-icons {
-  display: flex;
-  gap: 16px;
-}
-
-.cp-social-icons a {
-  color: #1a2b5f;
-  transition: color 0.2s;
-}
-
-.cp-social-icons a:hover {
-  color: #00a86b;
-}
-
-/* Sections */
-.cp-sections {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.cp-section-wrapper {
-  background: white;
-  border-radius: 8px;
-  border-left: 4px solid #00a86b;
-  overflow: hidden;
-}
-
-.cp-section-item {
-  padding: 16px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.cp-section-item span {
-  font-size: 16px;
-  font-weight: 500;
-  color: #1a2b5f;
-}
-
-.cp-section-item svg {
-  color: #1a2b5f;
-}
-
-.cp-section-item:hover {
-  background: #f8f9fa;
-}
-
-.cp-chevron {
-  transition: transform 0.3s ease;
-}
-
-.cp-chevron-rotated {
-  transform: rotate(180deg);
-}
-
-.cp-section-content {
-  max-height: 0;
-  overflow: hidden;
-  transition:
-    max-height 0.3s ease,
-    padding 0.3s ease;
-  background: white;
-  padding: 0 24px;
-}
-
-.cp-section-content-open {
-  max-height: 300px;
-  padding: 0 24px 16px 24px;
-}
-
-.cp-section-content p {
-  font-size: 14px;
-  color: #4b5563;
-  line-height: 1.6;
-  margin: 0;
-  border-top: 1px solid #e5e7eb;
-  padding-top: 16px;
 }
 
 /* Sidebar */

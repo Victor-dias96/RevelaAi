@@ -1,9 +1,7 @@
 // Aqui vai representar o GET para receber todos os políticos
 
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-
-const API_URL = "http://localhost:8080";
+import api from "../services/api";
 
 const fetchData = async ({ queryKey }) => {
   const [_key, pagina, termoBusca, estado] = queryKey;
@@ -14,7 +12,7 @@ const fetchData = async ({ queryKey }) => {
     siglaUF: estado || undefined,
   };
 
-  const { data } = await axios.get(`${API_URL}/api/deputado`, { params });
+  const { data } = await api.get("/api/deputado", { params });
   return data.dados;
 };
 
