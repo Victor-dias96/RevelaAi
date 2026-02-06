@@ -5,14 +5,15 @@ import api from "../services/api";
 
 const fetchData = async ({ queryKey }) => {
   const [_key, id] = queryKey;
-  const { data } = await api.get(`/api/deputado/${id}`);
-  return data.dados;
+  const { data } = await api.get(`/api/deputado/${id}/detalhes-completos`);
+  return data;
 };
 
-export function usePoliticoIDData(id) {
+export function usePoliticoDetails(id, options = {}) {
   const query = useQuery({
-    queryKey: ["politico", id],
+    queryKey: ["politico-detalhes", id],
     queryFn: fetchData,
+    enabled: !!id && (options.enabled !== undefined ? options.enabled : true),
   });
 
   return query;
