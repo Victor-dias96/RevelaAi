@@ -1,42 +1,101 @@
 import CandidateSection from "./CandidateSection";
 import "./CandidateDetails.css";
+import { useState } from "react";
+import { usePoliticoDetails } from "../hooks/usePoliticoDetails";
+import { dateConverterStringToNumber } from "../utils/dateConverter";
+import { formatterCpfOrCnpj } from "../utils/formatterCpfOrCnpj";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function CandidateExpenses({ id }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [paginaAtual, setPaginaAtual] = useState(1);
+  const ITENS_POR_PAGINA = 10;
+
+  const { data, isLoading, isError, error } = usePoliticoDetails(id, {
+    enabled: isOpen,
+    stateTime: (1000 * 60) & 5,
+  });
+
+  let listaCompleta = data?.despesas || [];
+
+  const totalPaginas = Math.ceil(listaCompleta.length / ITENS_POR_PAGINA);
+  const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
+  const fim = inicio + ITENS_POR_PAGINA;
+  const itensAtuais = listaCompleta.slice(inicio, fim);
+
   return (
     <CandidateSection
       titulo="Despesas"
-      requestData={() => console.log("Funcionou")}
+      isOpen={isOpen}
+      onToggle={() => setIsOpen(!isOpen)}
     >
-      <div className="conteudo-detalhes-politico">
-        <h3>MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR</h3>
-        <div className="detalhes-cinza">
-          <p>Nota Fiscal</p>
-          <span>|</span>
-          <p>cod. documento: 7977589</p>
-          <span>|</span>
-          <p>05/08/2025</p>
-        </div>
-        <div className="detalhe-linha">
-          <p className="tipo-info">Fornecedor:</p>
-          <p>AMORETTO CAFES EXPRESSO LTDA</p>
-        </div>
-        <div className="detalhe-linha">
-          <p className="tipo-info">CNPJ/CPF do fornecedor:</p>
-          <p>08.532.429/0001-31</p>
-        </div>
-        <div className="detalhe-linha">
-          <p className="tipo-info">Valor:</p>
-          <p className="valor-despesa">R$ 800,00</p>
-        </div>
-        <div className="detalhe-linha">
-          <p className="tipo-info">Link do Documento:</p>
-          <p>
-            <a href="https://www.camara.leg.br/cota-parlamentar/documentos/publ/3308/2025/7977589.pdf">
-              https://www.camara.leg.br/cota-parlamentar/documentos/publ/3308/2025/7977589.pdf
-            </a>
-          </p>
-        </div>
-      </div>
+      {isLoading && <div>Carregando frentes...</div>}
+
+      {isError && <div>Erro: {error?.message}</div>}
+
+      {!isLoading && !isError && listaCompleta.length === 0 && (
+        <div>Nenhuma frente encontrada para este parlamentar.</div>
+      )}
+
+      {!isLoading && !isError && itensAtuais.length > 0 && (
+        <>
+          {itensAtuais.map((despesa) => (
+            <div
+              key={despesa.codDocumento}
+              className="conteudo-detalhes-politico"
+            >
+              <h3>{despesa.tipoDespesa}</h3>
+              <div className="detalhes-cinza">
+                <p>{despesa.tipoDocumento}</p>
+                <span>|</span>
+                <p>cod. documento: {despesa.codDocumento}</p>
+                <span>|</span>
+                <p>{dateConverterStringToNumber(despesa.dataDocumento)}</p>
+              </div>
+              <div className="detalhe-linha">
+                <p className="tipo-info">Fornecedor:</p>
+                <p>{despesa.nomeFornecedor}</p>
+              </div>
+              <div className="detalhe-linha">
+                <p className="tipo-info">CNPJ/CPF do fornecedor:</p>
+                <p>{formatterCpfOrCnpj(despesa.cnpjCpfFornecedor)}</p>
+              </div>
+              <div className="detalhe-linha">
+                <p className="tipo-info">Valor:</p>
+                <p className="valor-despesa">{`R$ ${despesa.valorLiquido.toFixed(2)}`}</p>
+              </div>
+              <div className="detalhe-linha">
+                <p className="tipo-info">Link do Documento:</p>
+                <p>
+                  <a href={despesa.urlDocumento} target="_blank">
+                    {despesa.urlDocumento}
+                  </a>
+                </p>
+              </div>
+            </div>
+          ))}
+
+          {totalPaginas > 1 && (
+            <div className="paginacao-botoes">
+              <button
+                disabled={paginaAtual === 1}
+                onClick={() => setPaginaAtual((p) => p - 1)}
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <span className="pagina-atual">
+                {paginaAtual} de {totalPaginas}
+              </span>
+              <button
+                disabled={paginaAtual === totalPaginas}
+                onClick={() => setPaginaAtual((p) => p + 1)}
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          )}
+        </>
+      )}
     </CandidateSection>
   );
 }
