@@ -11,27 +11,27 @@ const teamMembers = [
 ];
 
 const Support = () => {
-  const [amountInCents, setAmountInCents] = useState(2000);
+  // const [amountInCents, setAmountInCents] = useState(2000);
 
-  const handleInputChange = (e) => {
-    const digits = e.target.value.replace(/\D/g, '');
-    if (digits === '') {
-      setAmountInCents(0);
-      return;
-    }
-    const newAmount = parseInt(digits, 10);
-    if (newAmount <= 10000) {
-      setAmountInCents(newAmount);
-    }
-  };
+  // const handleInputChange = (e) => {
+  //   const digits = e.target.value.replace(/\D/g, '');
+  //   if (digits === '') {
+  //     setAmountInCents(0);
+  //     return;
+  //   }
+  //   const newAmount = parseInt(digits, 10);
+  //   if (newAmount <= 10000) {
+  //     setAmountInCents(newAmount);
+  //   }
+  // };
 
-  const formatDisplay = (cents) => {
-    const valueAsFloat = cents / 100;
-    return `R$ ${valueAsFloat.toLocaleString('pt-BR', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    })}`;
-  };
+  // const formatDisplay = (cents) => {
+  //   const valueAsFloat = cents / 100;
+  //   return `R$ ${valueAsFloat.toLocaleString('pt-BR', {
+  //     minimumFractionDigits: 2,
+  //     maximumFractionDigits: 2,
+  //   })}`;
+  // };
 
   return (
     <div className="support-page">
@@ -64,41 +64,24 @@ const Support = () => {
       </section>
 
       <section className="support-card">
-        <h1 className="support-title">APOIE O PROJETO</h1>
+        <h1 className="support-title">Conte-nos sua opinião</h1>
         <p className="support-description">
-          Seu apoio financeiro mantém o site no ar e ajuda a trazer novas
-          funcionalidades e conteúdos.
+          Por favor, preencha o formulário abaixo para nos enviar sua opinião e
+          sugestões. Sua contribuição é muito importante para nós!
         </p>
-
-        <div className="support-value-card">
-          <div className="support-value-header">
-            <div className="support-value-label">
-              <p className="support-value-label-title">Escolha o valor:</p>
-              <p className="support-value-label-subtitle">
-                Digite o valor desejado (Máx R$ 100,00)
-              </p>
-            </div>
-
-            <input
-              type="text"
-              className="support-value-input"
-              value={formatDisplay(amountInCents)}
-              onChange={handleInputChange}
-              inputMode="numeric"
-            />
-          </div>
-        </div>
 
         <div className="support-button-container">
           <button
             className="support-button"
-            onClick={() => {
-              alert(`Apoiando com: ${formatDisplay(amountInCents)}`);
-              alert('Obrigado pelo apoio!');
-              setAmountInCents(2000);
-            }}
+            onClick={() =>
+              window.open(
+                'https://forms.gle/E37Yh1bgt9rtFgVF9',
+                '_blank',
+                'noopener,noreferrer'
+              )
+            }
           >
-            Apoiar Agora
+            Enviar Feedback
           </button>
         </div>
       </section>
